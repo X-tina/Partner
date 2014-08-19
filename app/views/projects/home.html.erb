@@ -1,0 +1,38 @@
+<div class = "container">
+  <% if @projects.empty? %>
+    <span class = "text-warning">
+      There are no Projects yet
+    </span>
+    <% else %>
+      <table class = "table table-hover table-bordered">
+        <thead>
+           <tr>
+             <th> Project_ id </th>
+             <th> Project name </th>
+             <th> Status </th>
+             <th> Action </th>
+           </tr>
+        </thead>
+
+        <tbody>
+          <div class = "projects-table" id = "projects">
+            <% @projects.each do |project| %>
+              <tr id = "<%= dom_id(project) %>">
+                <td> <%= project.id %> </td>
+                <td> <%= project.name %></td>
+                <td> <%= project.status %></td>
+                <td> <%= link_to edit_project_path(project), remote: true do %>
+             	       <i class = "icon-edit"> </i>
+             	       <% end %>
+                </td>
+                <td> <%= link_to project_path(project), remote: true, data: { confirm:    "   Are you sure?" }, method: :delete do %>
+                       <i class = "icon-remove"> </i>
+                    <% end %>
+                </td>
+              </tr>
+            <% end %>
+           </div>
+        <tbody>
+      </table>
+  <% end %>
+</div>
