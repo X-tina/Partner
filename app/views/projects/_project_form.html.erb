@@ -1,5 +1,5 @@
 <div class = "modal-header">
-  <h1> New project</h1>
+	<% project.new_record? ? "New project" : "Editing project #{project.name}" %>
   <%= simple_form_for project, remote: true do |p| %>
     <div class = "modal-body">
     	<%= p.input :name, placeholder: "new project" %>
