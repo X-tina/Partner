@@ -1,6 +1,15 @@
 <!DOCTYPE html>
 <html>
 <head>
+  <div class = "devise">
+    <% if user_signed_in? %>
+      <span> Hello, <%= "#{current_user.email}" %> | </span>
+      <%= link_to "Log uot", destroy_user_session_path, method: :delete %>
+    <% else %>
+      <%= link_to "Sign in", new_user_session_path %> |  
+      <%= link_to "Sign up", new_user_registration_path %>
+    <% end %>
+  </div>
   <title>Roxtudio Partner</title>
   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
@@ -8,6 +17,7 @@
 
 </head>
 <body>
+  
 <div class="row-fluid"> 
   <div class="span10 offset1">     
     <div class="hero-unit text-center">       
@@ -19,6 +29,6 @@
   <%= yield %>
 </div>
 <p class="notice"><%= notice %></p>
-<p class="alert"><%= alert %></p>
+<p class="alert-alert"><%= alert %></p>
 </body>
 </html>

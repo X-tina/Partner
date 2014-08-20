@@ -27,4 +27,4 @@ gem 'sdoc', '~> 0.4.0',          group: :doc
 gem 'spring',        group: :development
 gem 'bootstrap-sass', '~> 2.3.2.0'
 gem 'simple_form'
-gem 'devise', '3.2.2'
+gem 'devise', '3.2.4'

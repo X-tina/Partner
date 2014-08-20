@@ -16,14 +16,6 @@
  *= require_self
  */
 
-.btn {
-  margin-bottom: 25px;
-  margin-top: -150px;
-  a {
-      color: black;
-    }
-}
-
 .hero-unit {
   padding: 115px;
 }
@@ -34,6 +26,28 @@
   margin-bottom: 0px;
 }
 
+#new_btn {
+  margin-top: 0px;
+  a {
+      color: black;
+    }
+}
+
 .modal-body {
 	background-color: #eeeeee;
+  
+}
+
+#project_list {
+  
+}
+
+.devise {
+  float: right;
+  margin-right: 10%;
+}
+
+.notice {
+  padding-left: 10%;
+  margin-top: -31%;
 }
