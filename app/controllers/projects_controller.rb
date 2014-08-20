@@ -1,4 +1,5 @@
 class ProjectsController < ApplicationController
+
   def home
     @projects = Project.all
   end
@@ -9,6 +10,11 @@ class ProjectsController < ApplicationController
 
   def create
     @project = Project.create(project_params)
+    @projects = Project.all
+  end
+
+  def destroy
+    @project = Project.find(params[:id]).destroy
     @projects = Project.all
   end
 
