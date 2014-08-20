@@ -1,0 +1,15 @@
+<% @projects.each do |project| %>
+  <tr id = "<%= dom_id(project) %>">
+  <td> <%= project.id %> </td>
+  <td> <%= project.name %></td>
+  <td> <%= project.status %></td>
+  <td> <%= link_to edit_project_path(project), remote: true do %>
+         <i class = "icon-edit"> </i>
+       <% end %>
+  </td>
+    <td> <%= link_to project_path(project), remote: true, data: { confirm:    "   Are you sure?" }, method: :delete do %>
+         <i class = "icon-remove"> </i>
+      <% end %>
+    </td>
+  </tr>
+<% end %>
