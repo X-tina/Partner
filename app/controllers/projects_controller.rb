@@ -1,20 +1,20 @@
 class ProjectsController < ApplicationController
-	def home
+  def home
     @projects = Project.all
-	end
+  end
 
-	def new
-		@project = Project.new
-	end
+  def new
+    @project = Project.new
+  end
 
-	def create
-		@project = Project.create(project_params)
-		redirect_to root_path
-	end
+  def create
+    @project = Project.create(project_params)
+    @projects = Project.all
+  end
 
-	private
+  private
 
-	def project_params
-		params.require(:project).permit(:name)
-	end
+  def project_params
+    params.require(:project).permit(:name)
+  end
 end

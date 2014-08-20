@@ -1,28 +1,6 @@
-<div class = "container">
-  <% if @projects.empty? %>
-    <span class = "text-warning">
-      There are no Projects yet
-    </span>
-    <% else %>
-    <div class = "btn btn-large" id = "new_project"><%= link_to "New Project", new_project_path, remote: true %></div>
-    <br />
-      <table class = "table table-hover table-bordered">
-        <thead>
-           <tr>
-             <th> Project_ id </th>
-             <th> Project name </th>
-             <th> Status </th>
-             <th> Action </th>
-           </tr>
-        </thead>
-
-        <tbody>
-          <div class = "projects-table" id = "projects">
-            <%= render 'projects', projects: @projects %>
-           </div>
-        <tbody>
-      </table>
-  <% end %>
+<div id = "project_list" class = "container">
+  <%= render 'projects', projects: @projects %>
 </div>
+<br />
 
 <div id = "modal" class = "modal fade"> </div>

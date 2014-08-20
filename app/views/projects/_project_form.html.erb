@@ -1,9 +1,9 @@
 <div class = "modal-header">
   <h1> New project</h1>
-  <%= simple_form_for project do |p| %>
+  <%= simple_form_for project, remote: true do |p| %>
     <div class = "modal-body">
-    	<%= p.input :name %>
-    	<%= p.submit "Save", class: 'btn-save btn btn-primary' %>
+    	<%= p.input :name, placeholder: "new project" %>
+    	<%= p.submit "Save", class: 'btn-save btn' %>
     </div>
   <% end %>
 </div>
