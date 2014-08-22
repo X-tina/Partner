@@ -1,3 +1,6 @@
 class Project < ActiveRecord::Base
-	validates :name, presence: true
+  validates :name, presence: true
+  validates :user_id, presence: true
+
+  belongs_to :user
 end

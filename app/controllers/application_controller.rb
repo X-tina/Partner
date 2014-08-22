@@ -4,6 +4,8 @@ class ApplicationController < ActionController::Base
   protect_from_forgery with: :exception
   before_filter :configure_permitted_params, if: :devise_controller?
 
+  has_many :projects
+
   protected
 
   def configure_permitted_params
