@@ -3,6 +3,9 @@
   <%= simple_form_for project, remote: true do |p| %>
     <div class = "modal-body">
     	<%= p.input :name, placeholder: "new project" %>
+    	<% if current_user.admin? %>
+    	  <%= p.input :status %>
+    	<% end %>
     	<%= p.submit "Save", class: 'btn-save btn' %>
     </div>
   <% end %>

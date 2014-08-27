@@ -7,4 +7,8 @@ class User < ActiveRecord::Base
   has_many :projects
 
   attr_accessor :phone_number
+
+  def admin?
+  	admin
+  end
 end

@@ -42,6 +42,7 @@ class ProjectsController < ApplicationController
 
   def project_params
     parameters = [:name]
+    parameters << :status if current_user.admin?
     params.require(:project).permit(parameters)
   end
 
