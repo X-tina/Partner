@@ -3,7 +3,7 @@ class ProjectsController < ApplicationController
   before_filter :authenticate_user!
 
   def home
-    @projects = Project.all
+    @projects = Project.accessible_by(current_ability)
   end
 
   def new
@@ -13,31 +13,36 @@ class ProjectsController < ApplicationController
 
   def create
     @project = Project.new(project_params)
+    @project.user = current_user
+    authorize! :create, @project
     
     save_project
   end
 
   def edit
   	@project = project_find
+    authorize! :edit, @project
   	render :show_form
   end
 
   def update
     @project = project_find
     @project.assign_attributes(project_params)
+    authorize! :update, @project
 
     save_project    
   end
 
   def destroy
     @project = project_find.destroy
-    @projects = Project.all
+    @projects = Project.accessible_by(current_ability)
   end
 
   private
 
   def project_params
-    params.require(:project).permit(:name)
+    parameters = [:name]
+    params.require(:project).permit(parameters)
   end
 
   def project_find
@@ -46,7 +51,7 @@ class ProjectsController < ApplicationController
 
   def save_project
   	if @project.save
-  		@projects = Project.all
+  		@projects = Project.accessible_by(current_ability)
       render :hide_form
   	else
       render :show_form
