@@ -3,7 +3,7 @@ class ProjectsController < ApplicationController
   before_filter :authenticate_user!
 
   def home
-    @projects = Project.accessible_by(current_ability)
+    @projects = current_user.projects
   end
 
   def new

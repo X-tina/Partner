@@ -7,6 +7,11 @@ class ApplicationController < ActionController::Base
 
   protected
 
+  def permission_denied!(ex)
+    flash[:alert] = "You are not allowed!"
+    redirect_to root_url
+  end
+
   def configure_permitted_params
   	#devise_parameter_sanitizer.for(:sign_up) << :phone_number
   	#devise_parameter_sanitizer.for(:account_update) << :username
