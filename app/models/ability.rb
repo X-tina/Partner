@@ -2,12 +2,11 @@ class Ability
   include CanCan::Ability
 
   def initialize(user)
-    can :manage, Project, user_id: user.id
-    user ||= User.new # guest user (not logged in)
+    #can :manage, Project, user_id: user.id
     if user.admin?
       can :manage, :all
     else
-      can :read, :all
+      can [:read, :create], Project, user_id: user.id
     end
     #
     # The first argument to `can` is the action you are giving the user 

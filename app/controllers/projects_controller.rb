@@ -3,16 +3,18 @@ class ProjectsController < ApplicationController
   before_filter :authenticate_user!
 
   def home
-    @projects = current_user.projects
+    #@projects = current_user.projects
+    @projects = Project.accessible_by(current_ability)
   end
 
   def new
     @project = Project.new
     render :show_form
+    authorize! :new, @project
   end
 
   def create
-    @project = Project.new(project_params)
+    @project = current_user.projects.new(project_params)
     @project.user = current_user
     authorize! :create, @project
     

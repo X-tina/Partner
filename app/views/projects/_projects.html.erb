@@ -9,7 +9,9 @@
         <th> Project id </th>
         <th> Project name </th>
         <th> Status </th>
-        <th> Action </th>
+        <% if can? [:update, :destroy], projects %>
+          <th> Action </th>
+        <% end %>
       </tr>
     </thead>
 
@@ -21,14 +23,19 @@
           <td> <%= project.id %> </td>
           <td> <%= project.name %></td>
           <td> <%= project.status %></td>
-          <td> <%= link_to edit_project_path(project), remote: true do %>
+          <% if can? :update, project %>
+            <td> <%= link_to edit_project_path(project), remote: true do %>
                <i class = "icon-edit"> </i>
              <% end %>
-          </td>
-          <td> <%= link_to project_path(project), remote: true, data: { confirm:    "   Are you sure?" }, method: :delete do %>
+            </td>
+          <% end %>
+
+          <% if can? :destroy, project %>
+            <td> <%= link_to project_path(project), remote: true, data: { confirm:    "   Are you sure?" }, method: :delete do %>
                  <i class = "icon-remove"> </i>
                <% end %>
-             </td>
+            </td>
+          <% end %>
         </tr>
       <% end %>
     <tbody>
