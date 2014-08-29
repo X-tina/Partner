@@ -4,7 +4,7 @@ class ProjectsController < ApplicationController
 
   def home
     #@projects = current_user.projects
-    @projects = Project.accessible_by(current_ability)
+    @projects = Project.order_desc.accessible_by(current_ability)
   end
 
   def new
