@@ -1,0 +1,27 @@
+diff --git a/app/models/user.rb b/app/models/user.rb
+index bedbe8a..a97018f 100644
+--- a/app/models/user.rb
++++ b/app/models/user.rb
+@@ -1,7 +1,7 @@
+ class User < ActiveRecord::Base
+   # Include default devise modules. Others available are:
+   # :confirmable, :lockable, :timeoutable and :omniauthable
+-  devise :database_authenticatable, :registerable,
++  devise :database_authenticatable, :registerable, :confirmable,
+          :recoverable, :rememberable, :trackable, :validatable, :authentication_keys => [:email]
+ 
+   has_many :projects, dependent: :destroy
+diff --git a/config/environments/development.rb b/config/environments/development.rb
+index 03dfe37..206443b 100644
+--- a/config/environments/development.rb
++++ b/config/environments/development.rb
+@@ -36,6 +36,9 @@ Rails.application.configure do
+   
+   config.action_mailer.default_url_options = { :host => 'localhost:3000' }
+ 
++  config.action_mailer.delivery_method = :smtp 
++  config.action_mailer.smtp_settings = {:address => "localhost", :port => 1025}
++
+   # Raises error for missing translations
+   # config.action_view.raise_on_missing_translations = true
+ end
