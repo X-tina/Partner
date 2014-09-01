@@ -3,8 +3,10 @@ class Ability
 
   def initialize(user)
     #can :manage, Project, user_id: user.id
+
     if user.admin?
       can :manage, :all
+      #can [:read, :create, :update, :destroy], Project
     else
       can [:read, :create], Project, user_id: user.id
     end

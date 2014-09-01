@@ -1,6 +1,8 @@
 <div id = "new_btn" class = "btn btn-large" ><%= link_to "New Project", new_project_path, remote: true %>
 </div>
-
+<% if current_user.admin? %>
+  <b>RIGHT CODE!</b>
+<% end %>
 <div id = "project_list" class = "container">
   <br />
   <%= render 'projects', projects: @projects %>

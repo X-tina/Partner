@@ -4,13 +4,13 @@ class ProjectsController < ApplicationController
 
   def home
     #@projects = current_user.projects
-    @projects = Project.order_desc.accessible_by(current_ability)
+    current_user.admin? ? @projects = Project.order_desc : 
+                          @projects = Project.order_desc.accessible_by(current_ability)
   end
 
   def new
     @project = Project.new
     render :show_form
-    authorize! :new, @project
   end
 
   def create
